@@ -1,0 +1,2 @@
+contest: http://codeforces.com/gym/101532
+editorial: http://codeforces.com/blog/entry/54840
