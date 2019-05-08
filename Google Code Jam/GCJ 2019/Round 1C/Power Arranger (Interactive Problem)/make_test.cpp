@@ -110,6 +110,7 @@ ll random_gen(int sign) {
 
 int Ares_KN() // main
 {
+	// a program for creating tests for GCJ 2019 Interactive problem
 	srand(time(NULL));
 	string permu = "DCAEB"; // missing permutation
 	string origin = "ABCDE";
