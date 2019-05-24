@@ -6,6 +6,6 @@ Contains all of my code for projects and competitive programming stuff. Problems
 - [**HackerRank**](https://hackerrank.com)
 - [**CodeChef**](https://codechef.com)
 
-There are also other contests such as [**Google Code Jam**](https://codingcompetitions.withgoogle.com/codejam), [**Facebook Hacker Cup**](https://www.facebook.com/hackercup), etc..
+There are also other competitions such as [**Google Code Jam**](https://codingcompetitions.withgoogle.com/codejam), [**Facebook Hacker Cup**](https://www.facebook.com/hackercup), etc..
 
 To be updated.
