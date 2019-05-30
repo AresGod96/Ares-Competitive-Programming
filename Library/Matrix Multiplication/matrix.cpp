@@ -1,3 +1,6 @@
+// Matrix multiplication
+// submitted on problem FIBOSUM SPOJ
+// https://www.spoj.com/problems/FIBOSUM/
 #include <cstdio> 
 #include <vector>
 using namespace std;
