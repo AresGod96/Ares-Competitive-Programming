@@ -1,8 +1,8 @@
 # Matrix Multiplication Template
-- **Parameter to fix**
-  - size of square matrix (**sz**)
+- **Variables and Parameters**
+  - size of square matrix **sz*
   
   
-- **Support**
+- **Features**
   - Matrix multiplication operator
   - Matrix exponentiation
