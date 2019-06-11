@@ -2,7 +2,7 @@
 // - Find minimum spanning tree of a graph using DSU
 // - NOTE: GRAPH MUST CONNECTED
 // - Complexity: O(|E|*logV)
-// - submitted on spoj.com/problems/QBMST
+// - submitted on vn.spoj.com/problems/QBMST
 #pragma GCC optimize ("O3")
 #include <bits/stdc++.h>
 #define fi first
