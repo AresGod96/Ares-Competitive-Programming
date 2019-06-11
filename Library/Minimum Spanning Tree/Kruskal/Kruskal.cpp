@@ -11,13 +11,16 @@ using namespace std;
 const int MAXN = 2e5 + 100;
 
 const int MAX_NODE = MAXN;
-struct DisjointSet {
+struct DisjointSet
+{
 
-	struct node	{
+	struct node
+	{
 		int parent, rank;
 	} T[MAX_NODE];
 
-	DisjointSet(int n) {
+	DisjointSet(int n)
+	{
 		for (int i = 0; i < n; ++i) make(i);
 	}
 	void make(int u) { T[u].parent = u, T[u].rank = 0;};
@@ -32,13 +35,16 @@ struct DisjointSet {
 	{
 		u = find(u), v = find(v);
 		if (u == v) return;
-		if (T[u].rank < T[v].rank) T[u].parent = v;
-		else if (T[u].rank > T[v].rank) T[v].parent = u;
-		else T[v].parent = u, ++T[u].rank;
+		if (T[u].rank < T[v].rank)
+			T[u].parent = v;
+		else if (T[u].rank > T[v].rank)
+			T[v].parent = u;
+		else
+			T[v].parent = u, ++T[u].rank;
 	}
 };
 
-struct edge{
+struct edge {
 	int u, v, w;
 };
 priority_queue<pair<int, pair<int, int>>> heap;
@@ -68,6 +74,7 @@ int main()
 		dsu.merge(u, v);
 	}
 	printf("Minimum Spanning Tree's weight = %d\n", res);
-	for (auto x: E) printf("%d %d %d\n", x.u, x.v, x.w);
-  return 0;
+	for (auto x: E)
+		printf("%d %d %d\n", x.u, x.v, x.w);
+	return 0;
 }
