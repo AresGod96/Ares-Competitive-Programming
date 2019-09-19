@@ -13,6 +13,7 @@ struct DisjointSet {
 
 	struct node	{
 		int parent, rank;
+		int child;
 	} T[MAX_NODE];
 
 	DisjointSet() {
@@ -21,7 +22,12 @@ struct DisjointSet {
 	DisjointSet(int n) {
 		for (int i = 0; i < n; ++i) make(i);
 	}
-	void make(int u) { T[u].parent = u, T[u].rank = 0;};
+	void make(int u) { T[u].parent = u, T[u].rank = 0; T[u].child = 1;}
+
+	int get_child(int u)
+	{
+		return T[find(u)].child;
+	}
 
 	int find(int u)
 	{
@@ -33,9 +39,23 @@ struct DisjointSet {
 	{
 		u = find(u), v = find(v);
 		if (u == v) return;
-		if (T[u].rank < T[v].rank) T[u].parent = v;
-		else if (T[u].rank > T[v].rank) T[v].parent = u;
-		else T[v].parent = u, ++T[u].rank;
+		if (T[u].rank < T[v].rank)
+		{
+			T[u].parent = v;
+			T[v].child += T[u].child;
+		}
+		else if (T[u].rank > T[v].rank)
+		{
+			T[v].parent = u;
+			T[u].child += T[v].child;
+		}
+		else
+		{
+
+			T[v].parent = u;
+			T[u].child += T[v].child;
+			++T[u].rank;
+		}
 	}
 };
 
