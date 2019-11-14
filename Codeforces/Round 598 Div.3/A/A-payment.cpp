@@ -1,8 +1,8 @@
 /* 
 	- author: Ares
-	- "Let's make it to ORANGE"
+	- "Let's make it to ORANGE!"
 	- Problem: CF ROUND 1256 A - Payment Without Change
-	- Problem Link: https://codeforces.com/contest/1256/problem/A
+	- Problem link: https://codeforces.com/contest/1256/problem/A
 */
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
