@@ -1,7 +1,7 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: CF ROUND 1144 A - Diverse String
+	- Problem: CF ROUND 1144 A - Diverse Strings
 	- Problem link: https://codeforces.com/contest/1144/problem/A
 */
 #pragma comment(linker, "/stack:200000000")
