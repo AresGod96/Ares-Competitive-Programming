@@ -1,4 +1,4 @@
-# CF Round 1256 598 Div.3
+# CF Round 598 Div.3 (1256)
 **Contest**
 https://codeforces.com/contest/1256
 
