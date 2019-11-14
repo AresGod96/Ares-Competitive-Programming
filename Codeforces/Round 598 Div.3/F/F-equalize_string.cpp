@@ -136,7 +136,7 @@ int Ares_KN() // main
 			puts("YES");
 			continue;
 		}
-		// now s and t only contain at most 26 unique characters
+		// now s and t only contains at most 26 unique characters
 		int cnt = 0;
 		REP(i, s.size())
 			REP(j, t.size())
