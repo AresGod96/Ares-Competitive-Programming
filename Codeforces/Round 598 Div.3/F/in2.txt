@@ -1,0 +1,10 @@
+3
+3
+abc
+acb
+4
+dabc
+ddab
+5
+dceba
+abcde
