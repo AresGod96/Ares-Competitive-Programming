@@ -142,13 +142,11 @@ int Ares_KN() // main
 		int u = q.front();
 		q.pop();
 		for (auto v: g_inv[u])
-		{
-			if (dp[v] == -1 || dp[v] > dp[u] + 1)
+			if (dp[v] == -1)
 			{
 				dp[v] = dp[u] + 1;
 				q.emplace(v);
 			}
-		}
 	}
 	FOR(u, 1, n) printf("%d ", dp[u]);
 	return 0;
