@@ -4,4 +4,4 @@ https://codeforces.com/contest/1133
 
 
 **Editorial**
-http://codeforces.com/blog/entry/65807
+https://codeforces.com/blog/entry/65807
