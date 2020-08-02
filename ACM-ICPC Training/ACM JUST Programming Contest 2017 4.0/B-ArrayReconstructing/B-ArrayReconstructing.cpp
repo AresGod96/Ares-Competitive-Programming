@@ -133,7 +133,6 @@ int Ares_KN() // main
 		for (auto x: a) printf("%d ", x);
 		puts("");
 	}
-	return 0;
 
 	return 0;
 }
