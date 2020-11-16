@@ -1,5 +1,5 @@
 # Competitive Programming Library :computer:
-A collection of algorithm libraries, consists of my code and snippets during our training for Competitive Programming. Problems mainly come from
+A collection of algorithm libraries, consisting of my code and snippets during our training for Competitive Programming. Problems mainly come from
 - [**ACM International Collegiate Programming Contest (ICPC)**](https://icpcarchive.ecs.baylor.edu/)
 - [**Codeforces**](https://codeforces.com)
 - [**SPhere Online Judge**](https://spoj.com)
