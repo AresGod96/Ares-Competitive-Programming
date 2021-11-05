@@ -218,6 +218,5 @@ int main()
 	#endif
 	IOS
 	Ares_KN();
-	cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
 	return 0;
 }
