@@ -11,7 +11,7 @@ A collection of algorithm libraries, consisting of my code and snippets during o
 There are also problems from other competitions such as [**Google Code Jam**](https://codingcompetitions.withgoogle.com/codejam), [**Facebook Hacker Cup**](https://www.facebook.com/hackercup), etc..
 
 Here are my CP profile
-- CF Handle: [**Z-Saber**](https://codeforces.com/profile/Z-Saber)
+- CF Handle: [**RaidenEi**](https://codeforces.com/profile/RaidenEi)
 - BOJ Handle: [**aresgod**](https://www.acmicpc.net/user/aresgod)
 - solved.ac Handle: [**aresgod**](https://solved.ac/profile/aresgod)
 
