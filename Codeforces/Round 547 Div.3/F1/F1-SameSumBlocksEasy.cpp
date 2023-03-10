@@ -138,7 +138,7 @@ int Ares_KN() // main
 					dp[i] = max(dp[i], dp[j] + 1);
 					trace[i] = j;
 				}
-			if (mmax.fi < dp[i]) mmax = {dp[i], i};
+		 	if (mmax.fi < dp[i]) mmax = {dp[i], i};
 		}
 		if (mmax.fi > res.size())
 		{
