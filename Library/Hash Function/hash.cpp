@@ -8,6 +8,7 @@ https://open.kattis.com/contests/d7yx3a/problems/repeatedsubstrings
 #include <cstdio>
 #include <map>
 #include <vector>
+#include <ctime>
 using namespace std;
 #define FOR(i,a,b) for (int i = (a), _b = (b); i <= _b; i++)
 #define FORD(i,a,b) for (int i = (a), _b = (b); i >= _b; i--)
@@ -129,6 +130,7 @@ int main()
 			else if (better(res, tmp)) res = tmp;
 		}
 	}
-	printf("%d\n", res);
+	printf("%s\n", res.c_str());
+	cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
 	return 0;
 }
