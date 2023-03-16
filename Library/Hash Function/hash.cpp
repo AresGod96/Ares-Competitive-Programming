@@ -1,6 +1,9 @@
-// Hash function
-// submitted on problem K ACM ICPC Mid-central USA Regional 2018
-// https://open.kattis.com/contests/d7yx3a/problems/repeatedsubstrings
+/*
+Hash function
+submitted on problem K ACM ICPC Mid-central USA Regional 2018
+https://open.kattis.com/contests/d7yx3a/problems/repeatedsubstrings
+*/
+
 #include <iostream>
 #include <cstdio>
 #include <map>
@@ -126,5 +129,6 @@ int main()
 			else if (better(res, tmp)) res = tmp;
 		}
 	}
-	cout << res;
+	printf("%d\n", res);
+	return 0;
 }
