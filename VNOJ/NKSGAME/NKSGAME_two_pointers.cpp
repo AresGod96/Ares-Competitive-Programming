@@ -3,7 +3,7 @@
 	- "Let's make it to ORANGE!"
 	- Problem: VN SPOJ - NKSGAME
 	- Problem link: https://vn.spoj.com/problems/NKSGAME/
-	- solution: two pointers
+	- solution: two pointers O(N)
 */
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
@@ -146,7 +146,6 @@ int Ares_KN() // main
 		}
 	}
 	printf("%d\n", best);
-	return 0;
 
 	return 0;
 }
