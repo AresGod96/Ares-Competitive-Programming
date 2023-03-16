@@ -192,7 +192,6 @@ const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
-int dp_brute[MAXN][MAXN];
 int dp[MAXN];
 
 int Ares_KN() // main
