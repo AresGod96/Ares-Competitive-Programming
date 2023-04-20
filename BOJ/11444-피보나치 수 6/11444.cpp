@@ -191,30 +191,31 @@ const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
+// Matrix template
 struct Matrix {
-	int sz;
-	vector<vector<ll> > M;
+	int n;
+	vector<vector<long long> > M;
 
-	Matrix(int sz) {
-		(*this).sz = sz;
-		M.resize(sz);
-		REP(i, sz) M[i].resize(sz);
+	Matrix(int size) {
+		n = size;
+		M.resize(n, vector<long long>(n));
 	}
 
-	void show() {
-		REP(i, sz) {
-			REP(j, sz) printf("%lld ", M[i][j]);
-			puts("");
+	friend ostream& operator<<(ostream& os, const Matrix& mat) {
+		int n = mat.n;
+		for (int i = 0; i < n; ++i) {
+			for (int j = 0; j < n; ++j) os << mat.M[i][j] << ' ';
+			os << '\n';
 		}
+		return os;
 	}
 	
 	Matrix operator*(Matrix b) {
-		Matrix c(sz);
-		REP(i, sz)
-			REP(j, sz) {
+		Matrix c(n);
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < n; ++j) {
 				c.M[i][j] = 0;
-				REP(k, sz)
-				{
+				for (int k = 0; k < n; ++k) {
 					c.M[i][j] += (*this).M[i][k] * b.M[k][j];
 					c.M[i][j] %= MOD;
 				}
@@ -222,19 +223,18 @@ struct Matrix {
 		return c;
 	}
 
-	// power
-	Matrix operator^(ll k)
-	{
-		if (k == 1) return (*this);
+	Matrix operator^(long long k) {
+		if (k == 1) return *this;
 		Matrix tmp = (*this)^(k >> 1);
 		tmp = tmp * tmp;
 		return k & 1 ? ((*this) * tmp) : tmp;
 	}
 };
 
+
 int Ares_KN() // main
 {
-	Matrix base = Matrix(2);
+	Matrix base(2);
 	base.M = {{0, 1}, {1, 1}};
 
 	ll n;
