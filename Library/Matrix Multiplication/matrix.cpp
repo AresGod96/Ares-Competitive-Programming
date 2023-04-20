@@ -37,6 +37,15 @@ struct Matrix {
 		return os;
 	}
 	
+	Matrix operator%(int mod) {
+		Matrix tmp = *this;
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < n; ++j) {
+				tmp.M[i][j] %= mod;
+			}
+		return tmp;
+	}
+
 	Matrix operator*(Matrix b) {
 		Matrix c(n);
 		for (int i = 0; i < n; ++i)
