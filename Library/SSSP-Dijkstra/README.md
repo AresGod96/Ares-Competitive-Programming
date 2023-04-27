@@ -1,6 +1,6 @@
-# Single Source Shortest Path - Dijkstra Template
+# Single Source Shortest Path - Dijkstra
 - **Variables and Parameters**
-  - Graph G consists of set of vertices **V** and set of edges **E**
+  - Graph **G** consists of set of vertices **V** and set of edges **E**
   - Source **S**
   
   
