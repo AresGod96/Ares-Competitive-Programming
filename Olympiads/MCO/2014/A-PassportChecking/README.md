@@ -3,4 +3,6 @@
 - binary search
 
 ## Solution
-Easy to perform binary searching or using a map in $O(log N)$
+Perform binary searching or using a map for checking if a string exists in the dictionary.
+
+**Complexity**: $O(log N)$
