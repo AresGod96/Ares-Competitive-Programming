@@ -1,17 +1,16 @@
 /*
-	Matrix multiplication template
-	submitted on problem FIBOSUM
-	https://www.spoj.com/problems/FIBOSUM/
+	Algorithm: Matrix multiplication
+
+	Usage: calculate an exponentation of a square matrix
+	Complexity:
+		- multiplication: O(sz^3) 
+		- exponentiation: O(log(k) * (sz^3)) 
+	
+	Submitted to SPOJ FIBOSUM at https://www.spoj.com/problems/FIBOSUM/
 */
 #include <cstdio> 
 #include <vector>
 #include <iostream>
-#define FOR(i, a, b) for (int i = (a), _b = (b); i <= _b; i++)
-#define FORD(i, a, b) for (int i = (a), _b = (b); i >= _b; i--)
-#define REP(i, a) for (int i = 0, _a = (a); i < _a; ++i)
-#define REPD(i, a) for (int i = (a) - 1; i >= 0; --i)
-#define fi first
-#define se second
 using namespace std;
 
 typedef long long ll;
@@ -37,6 +36,15 @@ struct Matrix {
 		return os;
 	}
 	
+	Matrix operator%(int mod) {
+		Matrix tmp = *this;
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < n; ++j) {
+				tmp.M[i][j] %= mod;
+			}
+		return tmp;
+	}
+
 	Matrix operator*(Matrix b) {
 		Matrix c(n);
 		for (int i = 0; i < n; ++i)
