@@ -1,5 +1,5 @@
-# Competitive Programming Library :computer:
-A collection of algorithm libraries, consisting of my code and snippets during our training for Competitive Programming. Problems mainly come from
+# Problem Solving Resources :computer:
+:trophy: A collection of algorithm libraries and problem solution, consisting of my code and snippets during our training for competitive programming. Problems mainly come from online judges and problem-solving contests such as
 - [**ACM International Collegiate Programming Contest (ICPC)**](https://icpcarchive.ecs.baylor.edu/)
 - [**Codeforces**](https://codeforces.com)
 - [**VNOJ**](https://oj.vnoi.info/)
@@ -10,7 +10,7 @@ A collection of algorithm libraries, consisting of my code and snippets during o
 
 There are also problems from other competitions such as [**Google Code Jam**](https://codingcompetitions.withgoogle.com/codejam), [**Facebook Hacker Cup**](https://www.facebook.com/hackercup), etc..
 
-Here are my CP profile
+My CP profile
 - CF Handle: [**RaidenEi**](https://codeforces.com/profile/RaidenEi)
 - BOJ Handle: [**aresgod**](https://www.acmicpc.net/user/aresgod)
 - solved.ac Handle: [**aresgod**](https://solved.ac/profile/aresgod)
