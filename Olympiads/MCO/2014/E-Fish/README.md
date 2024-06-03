@@ -3,7 +3,7 @@
 - treap
 
 ## Solution
-Let's count how many sub-segmens ending at $i$ satisfy the condition $sum(A[j..i]) >= K$. With prefix sum, this is equal to $A[i] - A[j - 1] >= K$.
+Let's count how many sub-segments ending at $i$ satisfy the condition $sum(A[j..i]) >= K$. With prefix sum, this is equal to $A[i] - A[j - 1] >= K$.
 
 Reformulating the above inequality, if we fix one endpoint, say $i$, we are asked to count how many $j$ such that $A[j-1] <= A[i] - K$.
 
