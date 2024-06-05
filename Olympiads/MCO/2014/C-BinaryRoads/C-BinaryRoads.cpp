@@ -1,9 +1,9 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: Malaysian Computing Olympiad MCO 2014 - E - Fish
-	- Problem link: https://www.acmicpc.net/problem/13215
-	- Solution: Treap
+	- Problem: Malaysian Computing Olympiad MCO 2014 - C - Binary Roads
+	- Problem link: https://www.acmicpc.net/problem/13213
+	- Solution: BFS 
 */
 #define LOCAL
 #undef LOCAL
@@ -31,6 +31,17 @@
 #include <unordered_set>
 #include <unordered_map>
 using namespace std;
+
+// Policy-based multiset
+#include <ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/detail/standard_policies.hpp>
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+typedef tree<int, null_type, less<int>, rb_tree_tag,
+tree_order_statistics_node_update> ordered_set;
+template<typename T>
+using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+//
 
 #define FOR(i, a, b) for (int i = (a), _b = (b); i <= _b; i++)
 #define FORD(i, a, b) for (int i = (a), _b = (b); i >= _b; i--)
@@ -187,134 +198,40 @@ const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
-// Treap
-class Treap {
-	public:
-		struct Node {
-			ll key;
-			int priority, size;
-			Node* left;
-			Node* right;
-
-			Node(ll key) : key(key), priority(rand()), size(1), left(nullptr), right(nullptr) {}
-		};
-
-		Treap() : root(nullptr) {
-			srand(time(0));  // Seed for random priorities
-		}
-
-		void insert(ll key) {
-			root = insert(root, key);
-		}
-
-		int count_less_than(ll K) const {
-			return count_less_than(root, K);
-		}
-
-	private:
-		Node* root;
-
-		int get_size(Node* node) const {
-			return node ? node->size : 0;
-		}
-
-		void update_size(Node* node) {
-			if (node) {
-				node->size = get_size(node->left) + get_size(node->right) + 1;
-			}
-		}
-
-		Node* rotate_right(Node* y) {
-			Node* x = y->left;
-			Node* T2 = x->right;
-
-			// Perform rotation
-			x->right = y;
-			y->left = T2;
-
-			// Update sizes
-			update_size(y);
-			update_size(x);
-
-			// Return new root
-			return x;
-		}
-
-		Node* rotate_left(Node* x) {
-			Node* y = x->right;
-			Node* T2 = y->left;
-
-			// Perform rotation
-			y->left = x;
-			x->right = T2;
-
-			// Update sizes
-			update_size(x);
-			update_size(y);
-
-			// Return new root
-			return y;
-		}
-
-		Node* insert(Node* root, ll key) {
-			if (!root) return new Node(key);
-
-			if (key < root->key) {
-				root->left = insert(root->left, key);
-				if (root->left->priority > root->priority) {
-					root = rotate_right(root);
-				}
-			} else {
-				root->right = insert(root->right, key);
-				if (root->right->priority > root->priority) {
-					root = rotate_left(root);
-				}
-			}
-
-			update_size(root);
-			return root;
-		}
-
-		int count_less_than(Node* root, ll K) const {
-			if (!root) return 0;
-
-			if (root->key < K) {
-				return 1 + get_size(root->left) + count_less_than(root->right, K);
-			} else {
-				return count_less_than(root->left, K);
-			}
-		}
-};
-// end of Treap
-
-
-ll count_subarray(const vector<int>& a, int value) {
-	int n = a.size();
-	vector<ll> prefix(n + 1, 0);
-	REP(i, n) prefix[i] = a[i] + (i ? prefix[i - 1] : 0);
-
-	Treap treap;
-	treap.insert(prefix[0]);
-	ll res = a[0] >= value;
-	FOR(i, 1, n - 1) {
-		// count number of keys less than or equal to (prefix[i]-value)
-		res += treap.count_less_than(prefix[i] - value + 1);
-		treap.insert(prefix[i]);
-
-		res += prefix[i] >= value;
-	}
-
-	return res;
-}
+vector<int> g[MAXN][2];
+int dp[MAXN][2];
 
 int Ares_KN() // main
 {
-	int n, k;
-	cin >> n >> k;
-	vector<int> a(n);
-	REP(i, n) cin >> a[i];
-	printf("%lld\n", count_subarray(a, k));
+	int n, m;
+	cin >> n >> m;
+	while (m--) {
+		int u, v, w;
+		cin >> u >> v >> w;
+		g[u][w].emplace_back(v);
+		g[v][w].emplace_back(u);
+	}
 
+	memset(dp, -1, sizeof(dp));
+	queue<pii> Q;
+	Q.emplace(0, 0);
+	Q.emplace(0, 1);
+	dp[0][0] = dp[0][1] = 0;
+	while (!Q.empty()) {
+		int u = Q.front().fi, state = Q.front().se;
+		Q.pop();
+
+		for (auto v: g[u][state])
+			if (dp[v][!state] == -1) {
+				dp[v][!state] = dp[u][state] + 1;
+				Q.emplace(v, !state);
+			}
+	}
+
+	int res = INF;
+	if (dp[n - 1][0] != -1) res = dp[n - 1][0];
+	if (dp[n - 1][1] != -1) res = min(res, dp[n - 1][1]);
+	printf("%d\n", res == INF ? -1 : res);
 	return 0;
 }
 
