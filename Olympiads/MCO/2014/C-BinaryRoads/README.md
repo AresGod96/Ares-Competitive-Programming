@@ -5,8 +5,8 @@ Source: [Malaysian Computing Olympiad 2014](https://ioimalaysia.org/competition/
 
 ## Tags
 - BFS
-- Dynamic programming
-- Graph
+- dynamic programming
+- graph
 
 ## Solution
 
