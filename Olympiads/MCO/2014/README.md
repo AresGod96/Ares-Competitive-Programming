@@ -3,7 +3,7 @@
 
 ### :bookmark_tabs: [**Problemset**](https://www.acmicpc.net/category/detail/1514)
 - :white_check_mark: **A. Passport Checking** [statement](https://www.acmicpc.net/problem/13211) | [solution](./A-PassportChecking)
-- :question: **B. Random** [statement](https://www.acmicpc.net/problem/13212)
+- :question: **B. Random** [statement](https://www.acmicpc.net/problem/13212) | [solution](./B-Random)
 - :white_check_mark: **C. Binary Roads** [statement](https://www.acmicpc.net/problem/13213) | [solution](./C-BinaryRoads)
 - :question: **D. Swaps** [statement](https://www.acmicpc.net/problem/13214)
 - :white_check_mark: **E. Fish** [statement](https://www.acmicpc.net/problem/13215) | [solution](./E-Fish)
