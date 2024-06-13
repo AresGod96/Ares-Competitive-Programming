@@ -1,7 +1,7 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: Baekjoon OJ - Malaysian Computing Olympiad MCO 2014 - B - Random
+	- Problem: Malaysian Computing Olympiad MCO 2014 - B - Random
 	- Problem link: https://www.acmicpc.net/problem/13212
 */
 #define LOCAL

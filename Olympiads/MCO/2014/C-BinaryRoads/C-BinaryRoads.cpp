@@ -3,7 +3,7 @@
 	- "Let's make it to ORANGE!"
 	- Problem: Malaysian Computing Olympiad MCO 2014 - C - Binary Roads
 	- Problem link: https://www.acmicpc.net/problem/13213
-	- Solution: BFS 
+	- Solution: BFS
 */
 #define LOCAL
 #undef LOCAL
