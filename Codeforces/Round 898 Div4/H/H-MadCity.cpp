@@ -273,7 +273,7 @@ int Ares_KN() // main
 			Input:
 				N vertices with (N-1) edges -> exists 1 cycle
 			
-			Alogirhtm:
+			Algorithm:
 				Find vertices belong to that cycle, and if Valeriu enters the cycle first
 				then he can escape forever
 		*/
@@ -329,7 +329,7 @@ int Ares_KN() // main
 			pair<int, int> meta = dist_to_cycle(en);
 			int escaper = meta.fi;
 
-			// the first vertex in cycle which escapers reach
+			// the first vertex in cycle which escaper reach
 			int node = meta.se;
 			int catcher = dist_to_vertex(st, node);
 			puts(escaper < catcher ? "YES" : "NO");
