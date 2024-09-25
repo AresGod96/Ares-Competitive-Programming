@@ -1,4 +1,4 @@
-## Problem BOJ 1517 -  버블 소트
+## Problem BOJ 1517 -  버블 소트 <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 Source: [Baekjoon OJ](https://www.acmicpc.net/problem/1517)
 
 ## [Statement](https://www.acmicpc.net/problem/1517)
@@ -8,6 +8,7 @@ Source: [Baekjoon OJ](https://www.acmicpc.net/problem/1517)
 - compression
 - data structure
 
+## Difficulty <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Solution
 The problem asks to count the number of swaps made in bubble sort, which is equivalent to counting the number of inversion pairs in the array. An inversion occurs when a larger element precedes a smaller one in the array.
