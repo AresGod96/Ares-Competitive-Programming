@@ -199,8 +199,7 @@ class FenwickTree {
 		int max_value;
 		vector<int> ft;
 
-		FenwickTree(int max_value) {
-			(*this).max_value = max_value;
+		FenwickTree(int max_value) : max_value(max_value) {
 			ft.resize(max_value + 2, 0);
 		}
 
