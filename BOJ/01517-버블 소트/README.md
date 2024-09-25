@@ -7,13 +7,14 @@ Source: [Baekjoon OJ](https://www.acmicpc.net/problem/1517)
 - sorting
 - compression
 - data structure
+- binary indexed tree
 
 ## Difficulty <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Solution
-The problem asks to count the number of swaps made in bubble sort, which is equivalent to counting the number of inversion pairs in the array. An inversion occurs when a larger element precedes a smaller one in the array.
+The problem asks for the number of swaps required by Bubble Sort to sort an array. This can be reformulated as counting the number of inversion pairs in the array. An inversion is a pair $(i, j)$ such that $i < j$ and $A[i] > A[j]$.
 
-Since the values in the array $A[i]$ can be as large as $10^9$, directly working with such large values would be inefficient. To handle this, we first compress the values in the array. After compressing, we can use a data structure such as a Fenwick Tree (Binary Indexed Tree) to efficiently count the number of inversions.
+Since the elements in the array can be as large as $10^9$, directly counting inversions is inefficient. Instead, we can apply **coordinate compression** to reduce the range of array elements and then use a **Fenwick Tree (Binary Indexed Tree)** to efficiently count the inversions while sorting the array.
 
 The approach can be broken down as follows:
 
