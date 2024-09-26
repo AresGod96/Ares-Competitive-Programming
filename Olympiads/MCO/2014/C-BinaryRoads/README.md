@@ -1,12 +1,14 @@
-## Problem C - Binary Roads
+## Problem C - Binary Roads <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/gold4.svg" alt="Gold 4" width="20" height="20">
 Source: [Malaysian Computing Olympiad 2014](https://ioimalaysia.org/competition/mco/2014/)
 
 ## [Statement](https://www.acmicpc.net/problem/13213)
 
+## Difficulty <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/gold4.svg" alt="Gold 4" width="20" height="20">
+
 ## Tags
 - BFS
 - dynamic programming
-- graph
+- graph theory
 
 ## Solution
 

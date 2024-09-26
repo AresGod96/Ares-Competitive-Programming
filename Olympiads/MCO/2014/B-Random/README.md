@@ -1,7 +1,9 @@
-## Problem B - Random
+## Problem B - Random <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/silver3.svg" alt="Silver 3" width="20" height="20">
 Source: [Malaysian Computing Olympiad 2014](https://ioimalaysia.org/competition/mco/2014/)
 
 ## [Statement](https://www.acmicpc.net/problem/13212)
+
+## Difficulty <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/silver3.svg" alt="Silver 3" width="20" height="20">
 
 ## Tags
 - string

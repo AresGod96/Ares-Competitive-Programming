@@ -1,11 +1,13 @@
-## Problem D - Swaps
+## Problem D - Swaps <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/gold4.svg" alt="Gold 4" width="20" height="20">
 Source: [Malaysian Computing Olympiad 2014](https://ioimalaysia.org/competition/mco/2014/)
 
 ## [Statement](https://www.acmicpc.net/problem/13214)
 
+## Difficulty <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/gold4.svg" alt="Gold 4" width="20" height="20">
+
 ## Tags
 - BFS
-- graph
+- graph theory
 
 ## Solution
 Consider an example of $A = [1, 2, 3]$ and $B = [2, 3, 1]$.
