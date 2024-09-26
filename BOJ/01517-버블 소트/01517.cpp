@@ -192,8 +192,6 @@ const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
-vector<pii> highways;
-
 class FenwickTree {
 	public:
 		int max_value;
