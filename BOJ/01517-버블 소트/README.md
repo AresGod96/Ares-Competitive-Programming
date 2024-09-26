@@ -21,4 +21,4 @@ The approach can be broken down as follows:
 1. **Compression**: We map the array values to a smaller range while preserving the order. This allows us to handle arrays with large values efficiently in a Fenwick Tree.
 2. **Inversion Counting**: We traverse the array and use a Fenwick Tree to count how many elements larger than the current one have already been encountered. This gives the number of inversions for the current element.
 
-**Complexity**: $O(NlogN)$ due to sorting and operations on Fenwick Tree
+**Complexity**: $O(N \log N)$ due to sorting and operations on Fenwick Tree
