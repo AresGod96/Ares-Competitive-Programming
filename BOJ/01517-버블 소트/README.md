@@ -1,15 +1,15 @@
-## Problem BOJ 1517 -  버블 소트 <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
+## Problem BOJ 1517 -  버블 소트 <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 Source: [Baekjoon OJ](https://www.acmicpc.net/problem/1517)
 
 ## [Statement](https://www.acmicpc.net/problem/1517)
+
+## Difficulty <img src="https://github.com/AresGod96/Ares-Competitive-Programming/raw/master/boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Tags
 - sorting
 - compression
 - data structure
 - binary indexed tree
-
-## Difficulty <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Solution
 The problem asks for the number of swaps required by Bubble Sort to sort an array. This can be reformulated as counting the number of inversion pairs in the array. An inversion is a pair $(i, j)$ such that $i < j$ and $A[i] > A[j]$.
