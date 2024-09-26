@@ -12,4 +12,4 @@ Source: [Malaysian Computing Olympiad 2014](https://ioimalaysia.org/competition/
 ## Solution
 For each query, we perform a binary search or use a map to check if a string exists in the dictionary in $O(logN)$ time.
 
-**Complexity**: $O(Q\log N)$
+**Complexity**: $O(QlogN)$
