@@ -200,13 +200,15 @@ int Ares_KN() // main
 	cin >> n >> m >> r >> c;
 
 	int res = 8;
-	// corner
+	// corners
 	if ((r == 1 && c == 1) || (r == 1 && c == m) || (r == n && c == 1) || (r == n && c == m)) {
 		res = 3;
 	}
+	// boundary cells that are not corners
 	else if (r == 1 || r == n || c == 1 || c == m) {
 		res = 5;
 	}
+	// interior cells
 	else {
 		res = 8;
 	}
