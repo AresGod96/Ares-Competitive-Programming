@@ -195,17 +195,17 @@ const ll INF_LL = 1e16;
 
 int Ares_KN() // main
 {
-	int n, m;
+	int m, n;
 	int r, c;
-	cin >> n >> m >> r >> c;
+	cin >> m >> n >> r >> c;
 
 	int res = 8;
 	// corners
-	if ((r == 1 && c == 1) || (r == 1 && c == m) || (r == n && c == 1) || (r == n && c == m)) {
+	if ((r == 1 && c == 1) || (r == 1 && c == n) || (r == m && c == 1) || (r == m && c == n)) {
 		res = 3;
 	}
 	// boundary cells that are not corners
-	else if (r == 1 || r == n || c == 1 || c == m) {
+	else if (r == 1 || r == m || c == 1 || c == n) {
 		res = 5;
 	}
 	// interior cells
