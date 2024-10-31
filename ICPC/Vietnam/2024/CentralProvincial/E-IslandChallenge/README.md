@@ -22,9 +22,7 @@ To solve this problem, we need to calculate the minimum time required to visit e
    - Define $dp[i][mask]$ as the minimum time to visit all shrines in the subset represented by $mask$, ending at shrine $i$.
    - Transition: For each shrine $i$ in a subset $mask$, calculate the minimum time to reach an unvisited shrine $j$ and update the DP state:
    
-     $
-     dp[j][mask | (1 << j)] = \min(dp[j][mask | (1 << j)], dp[i][mask] + dist[i][j])
-     $
+     $dp[j][mask | (1 << j)] = \min(dp[j][mask | (1 << j)], dp[i][mask] + dist[i][j])$
 
 3. **Extracting the Result**:
    - After filling the DP table, the result is the minimum value among $dp[(1 << N) - 1][i]$, representing the time to visit all shrines and end at any shrine.
