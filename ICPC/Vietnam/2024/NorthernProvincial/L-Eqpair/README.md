@@ -1,4 +1,4 @@
-## Problem L - EQPAIR <img src="../../../../../boj-icon/silver1.svg" alt="Silver 1" width="20" height="20">
+## Problem L - Eqpair <img src="../../../../../boj-icon/silver1.svg" alt="Silver 1" width="20" height="20">
 Source: [ICPC Vietnam Northern Provincial 2024](https://oj.vnoi.info/contest/icpc24_mb)
 
 ## [Statement](https://oj.vnoi.info/problem/icpc24_mb_l)

@@ -1,7 +1,7 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: ICPC Vietnam Northern Provincial 2024 - L - EQPAIR
+	- Problem: ICPC Vietnam Northern Provincial 2024 - L - Eqpair
 	- Problem link: https://oj.vnoi.info/problem/icpc24_mb_l
 */
 #define LOCAL
