@@ -1,5 +1,5 @@
 ## :trophy: ICPC Vietnam Central Provincial Programming Contest 2024 :trophy:
-### :house: [**Homepage**](https://ioimalaysia.org/competition/mco/2014/)
+### :house: [**Homepage**](https://oj.vnoi.info/contest/icpc24_mt)
 
 ### :bookmark_tabs: [**Problemset**](https://oj.vnoi.info/contest/icpc24_mt)
 - :question: **A. Thief** [statement](https://oj.vnoi.info/problem/icpc24_mt_a)
