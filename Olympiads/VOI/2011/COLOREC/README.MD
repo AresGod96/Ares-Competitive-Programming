@@ -1,5 +1,5 @@
 ## Problem COLOREC <img src="../../../../boj-icon/gold1.svg" alt="Gold 1" width="20" height="20">
-Source: [Vietnamese Olympiad in Informatics 2011](https://oj.vnoi.info/contest/euler_tour)
+Source: [Vietnamese Olympiad in Informatics 2011](https://drive.google.com/drive/folders/1iNVER-0ociKM34HPzGmb6vnBgF6NMw5V)
 
 ## [Statement](https://oj.vnoi.info/problem/colorec)
 
