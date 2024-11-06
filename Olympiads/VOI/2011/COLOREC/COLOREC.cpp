@@ -1,13 +1,15 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: VNSPOJ - COLOREC
-	- Problem link: https://vn.spoj.com/problems/COLOREC/
+	- Problem: VOI 11 - Task 2 - COLOREC
+	- Problem link: https://oj.vnoi.info/problem/colorec
 */
+#define LOCAL
+#undef LOCAL
+
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
 #pragma GCC target("avx")
-
 #include <cassert>
 #include <iomanip>
 #include <iostream>
@@ -69,6 +71,91 @@ template<class T> inline int maximize(T& a, const T& val) {return a < val ? a = 
 #define __builtin_popcount __builtin_popcountll
 #define SZ(x) ((int)(x).size())
 
+// DEBUG template - many thanks to tourist
+template <typename A, typename B>
+string to_string(pair<A, B> p);
+ 
+template <typename A, typename B, typename C>
+string to_string(tuple<A, B, C> p);
+ 
+template <typename A, typename B, typename C, typename D>
+string to_string(tuple<A, B, C, D> p);
+ 
+string to_string(const string& s) {
+	return '"' + s + '"';
+}
+ 
+string to_string(const char* s) {
+	return to_string((string) s);
+}
+ 
+string to_string(bool b) {
+	return (b ? "true" : "false");
+}
+ 
+string to_string(vector<bool> v) {
+	bool first = true;
+	string res = "{";
+	for (int i = 0; i < static_cast<int>(v.size()); i++) {
+		if (!first)
+			res += ", ";
+		first = false;
+		res += to_string(v[i]);
+	}
+	res += "}";
+	return res;
+}
+ 
+template <size_t N>
+string to_string(bitset<N> v) {
+	string res = "";
+	for (size_t i = 0; i < N; i++)
+		res += static_cast<char>('0' + v[i]);
+	return res;
+}
+ 
+template <typename A>
+string to_string(A v) {
+	bool first = true;
+	string res = "{";
+	for (const auto &x : v) {
+		if (!first)
+			res += ", ";
+		first = false;
+		res += to_string(x);
+  	}
+	res += "}";
+	return res;
+}
+ 
+template <typename A, typename B>
+string to_string(pair<A, B> p) {
+	return "(" + to_string(p.first) + ", " + to_string(p.second) + ")";
+}
+ 
+template <typename A, typename B, typename C>
+string to_string(tuple<A, B, C> p) {
+	return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")";
+}
+ 
+template <typename A, typename B, typename C, typename D>
+string to_string(tuple<A, B, C, D> p) {
+	return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ", " + to_string(get<3>(p)) + ")";
+}
+void debug_out() { cerr << endl; }
+ 
+template <typename Head, typename... Tail>
+void debug_out(Head H, Tail... T) {
+	cerr << " " << to_string(H);
+	debug_out(T...);
+}
+
+#ifdef LOCAL
+	#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__);
+#else
+	#define debug(...) 42;
+#endif
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef std::pair<int, int> pii;
@@ -97,7 +184,7 @@ inline string toBinStr(ll x) {
 }
 
 // template ends here
-const int MAXN = 5e5 + 100;
+const int MAXN = 1e5 + 100;
 const int MOD = 1e9 + 7;
 const ll MAXV = 1e9;
 const double eps = 1e-12;
@@ -108,8 +195,7 @@ int off_set = 200;
 int rect[500][500];
 int cnt[1 << 4];
 
-void add_rect(int x, int y, int color)
-{
+void add_rect(int x, int y, int color) {
 	rect[x + off_set][y + off_set] = color;
 }
 
@@ -117,8 +203,7 @@ int Ares_KN() // main
 {
 	int n;
 	cin >> n;
-	REP(i, n)
-	{
+	REP(i, n) {
 		int x, y, col;
 		cin >> x >> y >> col;
 		add_rect(x, y, col);
@@ -126,26 +211,22 @@ int Ares_KN() // main
 	
 	ll res = 0;
 	FORD(top, 200, -200)
-		FORD(bot, top - 1, -200)
-		{
+		FORD(bot, top - 1, -200) {
 			// sweep
 			REP(i, 1 << 4) cnt[i] = 0;
-			FOR(col, -200, 200)
-			{
+			FOR(col, -200, 200) {
 				int x = col + off_set;
 				int y_top = top + off_set, y_bot = bot + off_set;
 				int c1 = rect[x][y_top];
 				int c2 = rect[x][y_bot];
 				// mask color c1 and c2 at col 
-				if (c1 && c2 && c1 != c2)
-				{
+				if (c1 && c2 && c1 != c2) {
 					int mask = (1 << (c1 - 1)) | (1 << (c2 - 1));
 					++cnt[mask];
 				}
 			}
 
-			REP(m1, 1 << 4) if (cnt[m1])
-			{
+			REP(m1, 1 << 4) if (cnt[m1]) {
 				int m2 = ((1 << 4) - 1) ^ m1;
 				res += 1LL * cnt[m1] * cnt[m2];
 			}
