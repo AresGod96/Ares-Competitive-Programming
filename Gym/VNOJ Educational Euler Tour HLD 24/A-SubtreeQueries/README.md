@@ -1,9 +1,9 @@
-## Problem A - Subtree Queries <img src="../../../../../boj-icon/plat4.svg" alt="Platinum 4" width="20" height="20">
+## Problem A - Subtree Queries <img src="../../../boj-icon/plat4.svg" alt="Platinum 4" width="20" height="20">
 Source: [VNOJ Educational Eulter Tour and HLD Contest](https://oj.vnoi.info/contest/euler_tour)
 
 ## [Statement](https://oj.vnoi.info/problem/euler_a)
 
-## Difficulty <img src="../../../../../boj-icon/plat4.svg" alt="Platinum 4" width="20" height="20">
+## Difficulty <img src="../../../boj-icon/plat4.svg" alt="Platinum 4" width="20" height="20">
 
 ## Tags
 - tree
