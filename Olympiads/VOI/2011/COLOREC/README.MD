@@ -15,7 +15,7 @@ Given $N$ points in a 2D plane, each colored one of four colors {1, 2, 3, 4}, we
 
 For subtask with $50\%$ score, an $O(N^4)$ solution would work.
 
-To achieve a $O(d^3)$ solution, where $d$ is the maximum absolute value of coordinates, we aim to count the 4-color rectangles by fixing two rows and sweeping through columns to count color combinations efficiently.
+To achieve an $O(d^3)$ solution, where $d$ is the maximum absolute value of coordinates, we aim to count the 4-color rectangles by fixing two rows and sweeping through columns to efficiently count color combinations.
 
 1. **Grid Mapping**:
    - Store each point’s color in a grid $rect[x][y]$, offsetting coordinates to handle negative values.
