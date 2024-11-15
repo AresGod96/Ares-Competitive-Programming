@@ -1,9 +1,9 @@
-## Problem BOJ 11437 - LCA <img src="../../boj-icon/gold3.svg" alt="Gold 3" width="20" height="20">
-Source: [Baekjoon OJ](https://www.acmicpc.net/problem/11437)
+## Problem BOJ 11438 - LCA <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
+Source: [Baekjoon OJ](https://www.acmicpc.net/problem/11438)
 
-## [Statement](https://www.acmicpc.net/problem/11437)
+## [Statement](https://www.acmicpc.net/problem/11438)
 
-## Difficulty <img src="../../boj-icon/gold3.svg" alt="Gold 3" width="20" height="20">
+## Difficulty <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Tags
 - tree

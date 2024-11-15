@@ -1,8 +1,8 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: Baekjoon OJ - 11437 - LCA
-	- Problem link: https://www.acmicpc.net/problem/11437
+	- Problem: Baekjoon OJ - 11438 - LCA 2
+	- Problem link: https://www.acmicpc.net/problem/11438
 
 	- Solution: Binary lifting
 		- Preprocess: O(NlogN)
@@ -188,7 +188,7 @@ inline string toBinStr(ll x) {
 }
 
 // template ends here
-const int MAXN = 5e4 + 10;
+const int MAXN = 1e5 + 10;
 const int MOD = 1e9 + 7;
 const ll MAXV = 1e9;
 const double eps = 1e-12;
