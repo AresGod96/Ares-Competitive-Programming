@@ -233,19 +233,13 @@ class LCA {
 			}
 		}
 
-		// lift node u up by 'k' levels
-		int lift(int u, int k) {
-			for (int i = 0; i < LOG; ++i) {
-				if (k & (1 << i)) {
-					u = up[u][i];
-				}
-			}
-			return u;
-		}
-
 		int get_lca(int u, int v) {
 			if (depth[u] < depth[v]) swap(u, v);
-			u = lift(u, depth[u] - depth[v]);
+			for (int i = LOG - 1; i >= 0; i--)
+				if (depth[u] - (1 << i) >= depth[v]) {
+					u = up[u][i];
+				}
+					
 			if (u == v) return u;
 
 			for (int i = LOG - 1; i >= 0; --i) {
