@@ -228,7 +228,7 @@ class LCA {
 			}
 		}
 
-		// life node u up by 'k' levels
+		// lift node u up by 'k' levels
 		int lift(int u, int k) {
 			for (int i = 0; i < LOG; ++i) {
 				if (k & (1 << i)) {
