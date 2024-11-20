@@ -3,8 +3,10 @@
 	- "Let's make it to ORANGE!"
 	- Problem: Croatian Highschool Competitions in Informatics 2006 - Final Exam #2 - LUBENICA
 	- Problem link: https://www.acmicpc.net/problem/3176
+	- Problem link: https://oj.vnoi.info/problem/lubenica
 
-	- Tags: lca
+	- Tags:
+		- lowest common ancestor
 */
 #define LOCAL
 #undef LOCAL
@@ -279,12 +281,10 @@ class LCA {
 				Returns the k-th parent of node u on the way to root using binary lifting
 				Complexity: O(logN)
 			*/
-			while (u != root) {
-				if (k == 0) return u;
-				if (k == 1) return up[u][0];
-				int e = log2(k);
-				k -= 1 << e;
-				u = up[u][e];
+			for (int i = 0; i < LOG; ++i) {
+				if (k & (1 << i)) {
+					u = up[u][i];
+				}
 			}
 			return u;
 		}
@@ -305,19 +305,14 @@ class LCA {
 			if (depth[u] == depth[v] + 1) return {max_path[u][0], min_path[u][0]};
 
 			pii res = {0, INF};
+			// binary lifting u by k levels
 			int k = depth[u] - depth[v];
-			while (u != v) {
-				if (k == 0) break;
-				if (k == 1) {
-					if (res.fi < max_path[u][0]) res.fi = max_path[u][0];
-					if (res.se > min_path[u][0]) res.se = min_path[u][0];
-					break;
+			for (int i = 0; i < LOG; ++i) {
+				if (k & (1 << i)) {
+					if (res.fi < max_path[u][i]) res.fi = max_path[u][i];
+					if (res.se > min_path[u][i]) res.se = min_path[u][i];
+					u = up[u][i];
 				}
-				int e = log2(k);
-				res.fi = max(res.fi, max_path[u][e]);
-				res.se = min(res.se, min_path[u][e]);
-				k -= 1 << e;
-				u = up[u][e];
 			}
 			return res;
 		}
