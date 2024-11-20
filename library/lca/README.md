@@ -37,3 +37,8 @@ Given a tree with $N$ nodes, answer multiple queries of the form: "What is the L
 - Binary lifting: $O(N \log N)$ preprocessing and $O(\log N)$ each query
 - Sparse table: $O(N \log N)$ preprocessing and $O(1)$ each query
 - Euler Tour: $O(N \log N)$ preprocessing and $O(\log N)$ each query
+
+### Practice problems
+- [**BOJ 11438 LCA 2**](../../boj/11438-LCA%202/)
+- [**BOJ 3176 Lubenica**](../../boj/03176-Lubenica/)
+
