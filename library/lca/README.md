@@ -33,7 +33,7 @@ Given a tree with $N$ nodes, answer multiple queries of the form: "What is the L
    - Use the sparse table to "lift" both nodes up to the same depth, then continue lifting both nodes up until reaching the LCA.
 
 
-**Complexity**:
+### Complexity
 - Binary lifting: $O(N \log N)$ preprocessing and $O(\log N)$ each query
 - Sparse table: $O(N \log N)$ preprocessing and $O(1)$ each query
 - Euler Tour: $O(N \log N)$ preprocessing and $O(\log N)$ each query

@@ -19,6 +19,6 @@ This problem requires efficiently handling two types of operations: range sum qu
 
 To handle the large input sizes up to $N = 100,000$ and $Q = 100,000$, a segment tree provides an optimal solution with both operations efficiently handled in $O(\log N)$.
 
-**Complexity**: 
-- **Each query and update**: $O(\log N)$
+### Complexity 
+- **Per query and update**: $O(\log N)$
 - **Overall**: $O(Q\log N)$
