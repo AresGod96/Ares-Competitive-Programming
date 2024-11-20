@@ -1,8 +1,11 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: Baekjoon OJ - 11438 - LCA 2
+	- Problem: Baekjoon OJ - 11438 - LCA
 	- Problem link: https://www.acmicpc.net/problem/11438
+
+	- Tags:
+		- lowest common ancestor
 
 	- Solution: Binary lifting
 		- Preprocess: O(NlogN)
@@ -195,23 +198,23 @@ const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
-vector<vector<int>> g;
+vector<vector<pii>> g;
+
+int depth[MAXN];
+int dist[MAXN]; // distance from root
+int up[MAXN][19];
 
 class LCA {
 	/*
-		This LCA finds the lowest common ancestor of two nodes (u, v) using binary lifting method
+		This LCA finds the lowest common ancestor of two nodes (u, v)
 		Pre-process: O(NlogN)
 		Query: O(logN)
 	*/
 	public:
 		int n, LOG;
 		int root;
-
-		int depth[MAXN];
-		// int d[MAXN];	// distance from root
-		int up[MAXN][19];
 		
-		LCA(vector<vector<int>> g, int root) {
+		LCA(vector<vector<pii>> g, int root) {
 			n = g.size();
 			LOG = log2(n) + 1;
 			this->root = root;
@@ -225,15 +228,33 @@ class LCA {
 				up[u][i] = up[up[u][i - 1]][i - 1];
 			}
 
-			for (auto v: g[u]) {
+			for (auto [v, w]: g[u]) {
 				if (v != p) {
 					depth[v] = depth[u] + 1;
+					dist[v] = dist[u] + w;
 					dfs(v, u);
 				}
 			}
 		}
 
+		int get_kth_parent(int u, int k) {
+			/*
+				Returns the k-th parent of node u on the way to root using binary lifting
+				Complexity: O(logN)
+			*/
+			for (int i = 0; i < LOG; ++i) {
+				if (k & (1 << i)) {
+					u = up[u][i];
+				}
+			}
+			return u;
+		}
+
 		int get_lca(int u, int v) {
+			/*
+				Returns the lowest common ancestor of node u and node v using binary lifting
+				Complexity: O(logN)
+			*/
 			if (depth[u] < depth[v]) swap(u, v);
 			for (int i = LOG - 1; i >= 0; i--)
 				if (depth[u] - (1 << i) >= depth[v]) {
@@ -251,9 +272,12 @@ class LCA {
 			return up[u][0];
 		}
 
-		// get distance between two nodes (u, v)
 		int get_dist(int u, int v) {
-			return depth[u] + depth[v] - 2 * depth[get_lca(u, v)];
+			/*
+				Returns the distance of the path between node u and node v
+				Complexity: O(logN) due to get_lca(u, v)
+			*/
+			return dist[u] + dist[v] - 2 * dist[get_lca(u, v)];
 		}
 };
 
@@ -267,8 +291,8 @@ int Ares_KN() // main
 	REP(i, n - 1) {
 		int u, v;
 		cin >> u >> v;
-		g[u].emplace_back(v);
-		g[v].emplace_back(u);
+		g[u].emplace_back(v, 1);
+		g[v].emplace_back(u, 1);
 	}
 
 	int root = 1;
