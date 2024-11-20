@@ -7,7 +7,7 @@ Source: [Croatian Highschool Competitions in Informatics 2006 - Final Exam #2](h
 
 ## Tags
 - tree
-- lowest common ancestor
+- [lowest common ancestor](../../library/lca)
 
 ## Solution
 Given a tree, we need to efficiently find the maximum and minimum edge weights on the path between node $u$ and $v$ for multiple queries.
