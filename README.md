@@ -19,6 +19,6 @@ My CP profile
 
 ## Highlights
 
-For most problems, I will rate their difficulty from **Bronze V** <img src="./boj-icon/bronze5.svg" alt="Bronze 5" width="16" height="16"> (easiest) to **Ruby 1** <img src="./boj-icon/ruby1.svg" alt="Ruby 1" width="16" height="16"> (hardest) based on [solved.ac](https://solved.ac) rating system.
+For most problems, I will rate their difficulty from **Bronze V** <img src="./boj-icon/bronze5.svg" alt="Bronze 5" width="16" height="16"> (easiest) to **Ruby I** <img src="./boj-icon/ruby1.svg" alt="Ruby 1" width="16" height="16"> (hardest) based on [solved.ac](https://solved.ac) rating system.
 
 Additionally, I will do my best to include a brief editorial for each problem and categorize them with relevant tags.
