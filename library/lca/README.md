@@ -39,8 +39,10 @@ Given a tree with $N$ nodes, answer multiple queries of the form: "What is the L
 - Euler Tour: $O(N \log N)$ preprocessing and $O(\log N)$ each query
 
 ### Practice problems
-- [BOJ 03176 - Lubenica](../../boj/03176-Lubenica/)
+- [USACO Oct 08 Gold - Pasture Walking](../../olympiads/USACO/Oct08-Gold/PastureWalking/)
 - [BOJ 11437 - LCA](../../boj/11437-LCA/)
 - [BOJ 11438 - LCA 2](../../boj/11438-LCA%202/)
+- [BOJ 03176 - Lubenica](../../boj/03176-Lubenica/)
+
 
 
