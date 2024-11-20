@@ -1,7 +1,7 @@
 /* 
 	- author: Ares
 	- "Let's make it to ORANGE!"
-	- Problem: Baekjoon OJ - 11438 - LCA
+	- Problem: Baekjoon OJ - 11438 - LCA 2
 	- Problem link: https://www.acmicpc.net/problem/11438
 
 	- Tags:
