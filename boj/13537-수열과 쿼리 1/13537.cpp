@@ -6,6 +6,7 @@
 
 	- Tags
 		- merge sort tree
+		- sqrt-decomposition
 */
 #define LOCAL
 #undef LOCAL
