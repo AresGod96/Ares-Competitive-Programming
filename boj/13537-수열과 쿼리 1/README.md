@@ -22,4 +22,5 @@ Building a merge sort tree takes $O(N\log N)$, while each query requires an addi
 
 ### Complexity
 - Build tree: $O(N\log N)$
-- Query: $O(Q \log^2 N)$
+- Query: $O(\log^2 N)$ per query
+- Overall: $O(Q\log^2 N)$
