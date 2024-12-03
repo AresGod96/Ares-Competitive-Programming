@@ -19,6 +19,7 @@ A merge sort tree is a type of segment tree that uses the divide-and-conquer app
 
 Building a merge sort tree takes $O(N\log N)$, while each query requires an additional binary search on the sorted ranges, resulting in $O(\log^2 N)$ per query.
 
+Similar task with online query version: [**BOJ 13544**](../13544-수열과%20쿼리%203/)
 
 ### Complexity
 - Build tree: $O(N\log N)$
