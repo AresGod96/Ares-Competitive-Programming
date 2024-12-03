@@ -1,12 +1,12 @@
-## Lowest Common Ancestor <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
+# Tutorial: Lowest Common Ancestor <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
 ## Difficulty <img src="../../boj-icon/plat5.svg" alt="Platinum 5" width="20" height="20">
 
-## Tutorial: Lowest Common Ancestor (LCA)
+## Overview
 
 The **Lowest Common Ancestor (LCA)** of two nodes in a tree is the deepest node that is an ancestor of both nodes. The LCA problem is fundamental for many tree-based queries, such as calculating the distance between nodes or verifying if one node is an ancestor of another. Here’s a concise guide on solving the LCA efficiently.
 
-### Problem Statement
+## Problem Statement
 Given a tree with $N$ nodes, answer multiple queries of the form: "What is the LCA of nodes $u$ and $v$?"
 
 ### Common Techniques
