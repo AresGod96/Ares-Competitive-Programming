@@ -1,5 +1,5 @@
 ## Problem BOJ 15681 - 트리와 쿼리 <img src="../../boj-icon/gold5.svg" alt="Gold 5" width="20" height="20">
-Source: [Yonsei Programming Contest 2018 - Practice Session](https://www.acmicpc.net/problem/15681)
+Source: [Yonsei Programming Contest 2018 - Practice Session](https://www.acmicpc.net/category/detail/1860)
 
 ## [Statement](https://www.acmicpc.net/problem/15681)
 
