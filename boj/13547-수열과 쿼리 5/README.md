@@ -10,7 +10,7 @@ Source: [Baekjoon OJ](https://www.acmicpc.net/problem/13547)
 
 
 ## Solution
-This problem can be solved efficiently by [Mo's algorithm]() with offline queries.
+This problem can be solved efficiently by [Mo's algorithm](../../library/MoAlgorithm/) with offline queries.
 
 Mo's algorithm relies on the following key principles:
 1. **Query Sorting**: Queries are sorted based on the block number of their left endpoint $l$ and then by their right endpoint $r$ within the block. This minimizes unnecessary movements of the left and right pointers.
