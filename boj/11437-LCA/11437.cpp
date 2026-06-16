@@ -191,94 +191,79 @@ inline string toBinStr(ll x) {
 }
 
 // template ends here
-const int MAXN = 1e5 + 10;
 const int MOD = 1e9 + 7;
 const ll MAXV = 1e9;
 const double eps = 1e-12;
 const int INF = 2e9 + 100;
 const ll INF_LL = 1e16;
 
-vector<vector<pii>> g;
-
-int depth[MAXN];
-int dist[MAXN]; // distance from root
-int up[MAXN][19];
-
-class LCA {
+struct LCA {
 	/*
-		This LCA finds the lowest common ancestor of two nodes (u, v)
-		Pre-process: O(NlogN)
-		Query: O(logN)
+		Lowest common ancestor via binary lifting.
+		Usage:
+		    LCA lca(n);
+		    lca.add_edge(u, v, w);  // w defaults to 1
+		    lca.build(root);        // root defaults to 1
+		    lca.get_lca(u, v)
+		    lca.get_dist(u, v)
+		    lca.get_kth_parent(u, k)
+		Pre-process: O(N log N)
+		Query:       O(log N)
 	*/
-	public:
-		int n, LOG;
-		int root;
-		
-		LCA(vector<vector<pii>> g, int root) {
-			n = g.size();
-			LOG = log2(n) + 1;
-			this->root = root;
-			depth[root] = 0;
-			dfs(root, root);
-		}
+	int n, LOG;
+	vector<vector<pii>> g;
+	vector<int> depth, dist;
+	vector<vector<int>> up;
 
-		void dfs(int u, int p) {
-			up[u][0] = p;
-			for (int i = 1; i < LOG; ++i) {
-				up[u][i] = up[up[u][i - 1]][i - 1];
+	LCA(int n) : n(n) {
+		LOG = 1;
+		while ((1 << LOG) <= n) LOG++;
+		g.assign(n + 1, {});
+		depth.assign(n + 1, 0);
+		dist.assign(n + 1, 0);
+		up.assign(n + 1, vector<int>(LOG, 0));
+	}
+
+	void add_edge(int u, int v, int w = 1) {
+		g[u].emplace_back(v, w);
+		g[v].emplace_back(u, w);
+	}
+
+	void build(int root = 1) {
+		dfs(root, root);
+	}
+
+	void dfs(int u, int p) {
+		up[u][0] = p;
+		FOR(i, 1, LOG - 1) up[u][i] = up[up[u][i-1]][i-1];
+		for (auto [v, w] : g[u]) {
+			if (v != p) {
+				depth[v] = depth[u] + 1;
+				dist[v] = dist[u] + w;
+				dfs(v, u);
 			}
-
-			for (auto [v, w]: g[u]) {
-				if (v != p) {
-					depth[v] = depth[u] + 1;
-					dist[v] = dist[u] + w;
-					dfs(v, u);
-				}
-			}
 		}
+	}
 
-		int get_kth_parent(int u, int k) {
-			/*
-				Returns the k-th parent of node u on the way to root using binary lifting
-				Complexity: O(logN)
-			*/
-			for (int i = 0; i < LOG; ++i) {
-				if (k & (1 << i)) {
-					u = up[u][i];
-				}
-			}
-			return u;
-		}
+	// Returns the k-th ancestor of u toward the root. O(log N).
+	int get_kth_parent(int u, int k) {
+		FOR(i, 0, LOG - 1) if (k >> i & 1) u = up[u][i];
+		return u;
+	}
 
-		int get_lca(int u, int v) {
-			/*
-				Returns the lowest common ancestor of node u and node v using binary lifting
-				Complexity: O(logN)
-			*/
-			if (depth[u] < depth[v]) swap(u, v);
-			for (int i = LOG - 1; i >= 0; i--)
-				if (depth[u] - (1 << i) >= depth[v]) {
-					u = up[u][i];
-				}
-					
-			if (u == v) return u;
+	// Returns LCA of u and v. O(log N).
+	int get_lca(int u, int v) {
+		if (depth[u] < depth[v]) swap(u, v);
+		FORD(i, LOG - 1, 0) if (depth[u] - (1 << i) >= depth[v]) u = up[u][i];
+		if (u == v) return u;
+		FORD(i, LOG - 1, 0) if (up[u][i] != up[v][i]) { u = up[u][i]; v = up[v][i]; }
+		return up[u][0];
+	}
 
-			for (int i = LOG - 1; i >= 0; --i) {
-				if (up[u][i] != up[v][i]) {
-					u = up[u][i];
-					v = up[v][i];
-				}
-			}
-			return up[u][0];
-		}
-
-		int get_dist(int u, int v) {
-			/*
-				Returns the distance of the path between node u and node v
-				Complexity: O(logN) due to get_lca(u, v)
-			*/
-			return dist[u] + dist[v] - 2 * dist[get_lca(u, v)];
-		}
+	// Returns weighted distance between u and v. O(log N).
+	int get_dist(int u, int v) {
+		return dist[u] + dist[v] - 2 * dist[get_lca(u, v)];
+	}
 };
 
 
@@ -286,17 +271,14 @@ int Ares_KN() // main
 {
 	int n;
 	cin >> n;
-	g.resize(n + 1);
+	LCA lca(n);
 
 	REP(i, n - 1) {
 		int u, v;
 		cin >> u >> v;
-		g[u].emplace_back(v, 1);
-		g[v].emplace_back(u, 1);
+		lca.add_edge(u, v);
 	}
-
-	int root = 1;
-	LCA lca(g, root);
+	lca.build(1);
 
 	int q;
 	cin >> q;
