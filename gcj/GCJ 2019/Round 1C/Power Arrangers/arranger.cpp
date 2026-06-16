@@ -6,7 +6,6 @@
 */
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
-#pragma GCC target("avx")
 
 #include <cassert>
 #include <iomanip>

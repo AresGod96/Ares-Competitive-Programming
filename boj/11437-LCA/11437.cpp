@@ -16,7 +16,6 @@
 
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
-#pragma GCC target("avx")
 #include <cassert>
 #include <iomanip>
 #include <iostream>
@@ -245,13 +244,19 @@ struct LCA {
 		}
 	}
 
-	// Returns the k-th ancestor of u toward the root. O(log N).
+	/*
+		Returns the k-th ancestor of u toward the root. O(log N).
+		Complexity: O(log N).
+	*/
 	int get_kth_parent(int u, int k) {
 		FOR(i, 0, LOG - 1) if (k >> i & 1) u = up[u][i];
 		return u;
 	}
 
-	// Returns LCA of u and v. O(log N).
+	/*
+		Returns LCA of u and v.
+		Complexity: O(log N).
+	*/
 	int get_lca(int u, int v) {
 		if (depth[u] < depth[v]) swap(u, v);
 		FORD(i, LOG - 1, 0) if (depth[u] - (1 << i) >= depth[v]) u = up[u][i];
@@ -260,7 +265,10 @@ struct LCA {
 		return up[u][0];
 	}
 
-	// Returns weighted distance between u and v. O(log N).
+	/*
+		Returns weighted distance between u and v.
+		Complexity: O(log N).
+	*/
 	int get_dist(int u, int v) {
 		return dist[u] + dist[v] - 2 * dist[get_lca(u, v)];
 	}
@@ -295,7 +303,7 @@ int main()
 {
 	//freopen(".inp", "r", stdin);	freopen(".out", "w", stdout);
 	#ifndef ONLINE_JUDGE
-		freopen("input.txt", "r", stdin);
+		(void)(void)freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();

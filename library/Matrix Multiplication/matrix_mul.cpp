@@ -86,7 +86,7 @@ ll sum_fib(int n) {
 
 int main() {
 	#ifndef ONLINE_JUDGE
-		freopen("input.txt", "r", stdin);
+		(void)freopen("input.txt", "r", stdin);
 	#endif
 
 	cin.tie(0), ios::sync_with_stdio(0);

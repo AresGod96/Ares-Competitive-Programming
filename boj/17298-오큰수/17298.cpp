@@ -9,7 +9,6 @@
 
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast,no-stack-protector")
-#pragma GCC target("avx")
 #include <cassert>
 #include <iomanip>
 #include <iostream>
@@ -214,7 +213,7 @@ int main()
 {
 	//freopen(".inp", "r", stdin);	freopen(".out", "w", stdout);
 	#ifndef ONLINE_JUDGE
-		freopen("input.txt", "r", stdin);
+		(void)(void)freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();
