@@ -32,15 +32,15 @@ The path from $u$ to $v$ passes through $\ell$: $u \to \cdots \to \ell \to \cdot
 
 **Case 1** — the $k$-th node lies on the $u \to \ell$ segment ($k \leq d_u$):
 
-$$\text{answer} = \text{kth\_parent}(u,\ k - 1)$$
+$$\text{answer} = \text{anc}(u,\ k - 1)$$
 
 **Case 2** — the $k$-th node lies at or below $\ell$ toward $v$ ($k > d_u$):
 
 Let $k' = k - d_u - 1$ be the 0-indexed offset past $\ell$ along the $\ell \to v$ segment. The answer node is $k'$ steps from $v$ going upward:
 
-$$\text{answer} = \text{kth\_parent}(v,\ d_v - k')$$
+$$\text{answer} = \text{anc}(v,\ d_v - k')$$
 
-`kth_parent(u, k)` is implemented via binary lifting in $O(\log N)$.
+$\text{anc}(u, k)$ denotes the $k$-th ancestor of $u$, implemented via binary lifting in $O(\log N)$.
 
 ### Implementation notes
 
