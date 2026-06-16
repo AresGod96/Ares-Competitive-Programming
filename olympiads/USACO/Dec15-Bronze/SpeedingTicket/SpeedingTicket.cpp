@@ -224,7 +224,7 @@ int main()
 {
 	//freopen("speeding.in", "r", stdin);	freopen("speeding.out", "w", stdout);
 	#ifndef ONLINE_JUDGE
-		(void)(void)freopen("input.txt", "r", stdin);
+		freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();

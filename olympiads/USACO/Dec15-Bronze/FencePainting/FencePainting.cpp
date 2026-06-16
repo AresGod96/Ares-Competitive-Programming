@@ -213,7 +213,7 @@ int main()
 {
 	//freopen("paint.in", "r", stdin);	freopen("paint.out", "w", stdout);
 	#ifndef ONLINE_JUDGE
-		(void)(void)freopen("input.txt", "r", stdin);
+		freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();

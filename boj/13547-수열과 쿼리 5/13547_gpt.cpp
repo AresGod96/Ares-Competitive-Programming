@@ -28,7 +28,7 @@ int query(int idx) {
 
 int main() {
 	#ifndef ONLINE_JUDGE
-		(void)freopen("input.txt", "r", stdin);
+		freopen("input.txt", "r", stdin);
 	#endif
 	ios::sync_with_stdio(0), cin.tie(0);
 

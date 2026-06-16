@@ -190,7 +190,7 @@ int Ares_KN() // main
 int main()
 {
 	#ifndef ONLINE_JUDGE
-		(void)(void)freopen("input.txt", "r", stdin);
+		freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();

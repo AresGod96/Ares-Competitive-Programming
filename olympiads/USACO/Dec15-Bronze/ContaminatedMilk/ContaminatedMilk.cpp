@@ -232,7 +232,7 @@ int main()
 {
 	//freopen("badmilk.in", "r", stdin);	freopen("badmilk.out", "w", stdout);
 	#ifndef ONLINE_JUDGE
-		(void)(void)freopen("input.txt", "r", stdin);
+		freopen("input.txt", "r", stdin);
 	#endif
 	IOS
 	Ares_KN();
