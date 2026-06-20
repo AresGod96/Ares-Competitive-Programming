@@ -141,6 +141,27 @@ Compilation is file-scoped — each `.cpp` is self-contained; there are no share
 
 ---
 
+## Git Hygiene — Compiled Binaries Never Get Committed
+
+Compiled binaries are produced beside their source by the build command
+(`g++ ... -o <basename> <file>`), so they are **extensionless and named after the `.cpp`**
+(e.g. `spoj/PT07Y/PT07Y`). They must never be committed.
+
+A `pre-commit` hook (`.git/hooks/pre-commit`) enforces this. It unstages any compiled
+artifact from the commit, detecting them two ways:
+
+1. **By extension** — `.exe .o .out .obj .bin .dll .so .dylib .a .class .pyc`
+2. **By content** — ELF / Mach-O / PE / object files via `file --mime-type` (this is what
+   catches the extensionless artifacts above)
+
+It only **unstages** (`git rm --cached`); it never deletes files from disk. The hook is POSIX
+`sh`/dash-safe and preserves paths containing spaces (e.g. `library/Disjoint Set - Union Find/`).
+
+> `.git/hooks/` is **not** version-controlled, so the hook lives only in each local clone.
+> If you re-clone, reinstall it. (`.vscode/`, `.serena/`, `.claude/` are git-ignored.)
+
+---
+
 ## Editorial / README Convention
 
 Each README follows this template:
