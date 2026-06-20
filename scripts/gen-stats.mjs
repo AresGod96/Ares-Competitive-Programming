@@ -5,8 +5,11 @@
 // Zero dependencies. Run from the repo root:
 //   node scripts/gen-stats.mjs
 //
-// It scans each source directory for .cpp solutions and reads the "Difficulty"
-// line of every problem README to tally solved.ac tiers, then writes two
+// Solutions are attributed to the judge that HOSTS them, not to the folder they
+// happen to sit in. Most folders map 1:1 to a source (boj/ -> BOJ). The gym/
+// folder is "mixed": each contest is routed to Codeforces / VNOJ / Kattis by
+// detecting the problem link in its files. It also reads the "Difficulty" line
+// of every problem README to tally solved.ac tiers, then writes two
 // self-contained SVG cards that GitHub renders inline in the README.
 
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from "node:fs";
@@ -16,19 +19,44 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = join(ROOT, "assets");
 
-// --- Source directories, in canonical display order -------------------------
-const SOURCES = [
-  ["codeforces", "Codeforces"],
-  ["boj", "BOJ"],
-  ["gym", "Gym"],
-  ["olympiads", "Olympiads"],
-  ["vnoj", "VNOJ"],
-  ["spoj", "SPOJ"],
-  ["icpc", "ICPC"],
-  ["gcj", "GCJ"],
-  ["free-contest", "Free Contest"],
-  ["cses", "CSES"],
+// Canonical source order + chart colors. Kattis has no folder of its own; it
+// appears purely through link routing of gym/ contests.
+const SOURCE_META = [
+  ["Codeforces", "#5b8def"],
+  ["BOJ", "#ef6f6c"],
+  ["Olympiads", "#f2b134"],
+  ["VNOJ", "#4cb944"],
+  ["SPOJ", "#9b5de5"],
+  ["ICPC", "#00bbf9"],
+  ["GCJ", "#f15bb5"],
+  ["Kattis", "#22d3ee"],
+  ["Free Contest", "#fb923c"],
+  ["CSES", "#a3a3a3"],
 ];
+
+// Folders that map 1:1 to a source.
+const FOLDER_SOURCE = {
+  codeforces: "Codeforces",
+  boj: "BOJ",
+  olympiads: "Olympiads",
+  vnoj: "VNOJ",
+  spoj: "SPOJ",
+  icpc: "ICPC",
+  gcj: "GCJ",
+  "free-contest": "Free Contest",
+  cses: "CSES",
+};
+
+// "Mixed" folders hold contests from several judges (e.g. Codeforces Gym, VNOJ,
+// Kattis all live under gym/). Each contest is attributed by the first link
+// matched in its files; contests with no recognised link use the fallback.
+const MIXED_FOLDERS = ["gym"];
+const LINK_SOURCE = [
+  [/codeforces\.com/i, "Codeforces"],
+  [/oj\.vnoi\.info/i, "VNOJ"],
+  [/open\.kattis\.com/i, "Kattis"],
+];
+const MIXED_FALLBACK = "Codeforces"; // gym/ defaults to Codeforces Gym
 
 // solved.ac tier groups + their official colors.
 const TIERS = [
@@ -38,12 +66,6 @@ const TIERS = [
   ["plat", "Platinum", "#27e2a4"],
   ["dia", "Diamond", "#00b4fc"],
   ["ruby", "Ruby", "#ff0062"],
-];
-
-// Distinct palette for the source chart.
-const SOURCE_COLORS = [
-  "#5b8def", "#ef6f6c", "#f2b134", "#4cb944", "#9b5de5",
-  "#00bbf9", "#f15bb5", "#22d3ee", "#fb923c", "#a3a3a3",
 ];
 
 const SKIP_DIRS = new Set([".git", ".gitnexus", ".serena", ".vscode", "node_modules", "boj-icon", "assets"]);
@@ -70,12 +92,29 @@ function walk(dir, onFile) {
   }
 }
 
-function countCpp(srcDir) {
+function countCpp(absDir) {
   let n = 0;
-  walk(join(ROOT, srcDir), (f) => {
+  walk(absDir, (f) => {
     if (f.endsWith(".cpp")) n += 1;
   });
   return n;
+}
+
+// Returns the source label for a contest folder by matching the first known
+// problem link in its .md / .cpp files, or null if none is found.
+function detectSourceByLink(absDir) {
+  let found = null;
+  walk(absDir, (f) => {
+    if (found || !/\.(md|cpp)$/i.test(f)) return;
+    const text = readFileSync(f, "utf8");
+    for (const [re, label] of LINK_SOURCE) {
+      if (re.test(text)) {
+        found = label;
+        return;
+      }
+    }
+  });
+  return found;
 }
 
 function tallyTiers() {
@@ -210,12 +249,42 @@ function svg(w, h, body) {
 }
 
 // --- Main --------------------------------------------------------------------
-const sourceRows = SOURCES.map(([dir, label], i) => ({
-  dir,
-  label,
-  value: countCpp(dir),
-  color: SOURCE_COLORS[i % SOURCE_COLORS.length],
-}));
+const counts = new Map(SOURCE_META.map(([label]) => [label, 0]));
+const add = (label, n) => counts.set(label, (counts.get(label) || 0) + n);
+
+// Folders that map 1:1 to a source.
+for (const [dir, label] of Object.entries(FOLDER_SOURCE)) {
+  add(label, countCpp(join(ROOT, dir)));
+}
+
+// Mixed folders: route each contest to its hosting judge by link.
+for (const folder of MIXED_FOLDERS) {
+  const base = join(ROOT, folder);
+  let entries;
+  try {
+    entries = readdirSync(base);
+  } catch {
+    continue;
+  }
+  for (const name of entries) {
+    if (SKIP_DIRS.has(name)) continue;
+    const contestDir = join(base, name);
+    let st;
+    try {
+      st = statSync(contestDir);
+    } catch {
+      continue;
+    }
+    if (!st.isDirectory()) continue;
+    const label = detectSourceByLink(contestDir) || MIXED_FALLBACK;
+    add(label, countCpp(contestDir));
+  }
+}
+
+const colorOf = Object.fromEntries(SOURCE_META);
+const sourceRows = SOURCE_META
+  .map(([label]) => ({ label, value: counts.get(label) || 0, color: colorOf[label] }))
+  .filter((r) => r.value > 0);
 const tierCounts = tallyTiers();
 
 mkdirSync(ASSETS, { recursive: true });

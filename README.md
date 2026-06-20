@@ -7,6 +7,7 @@
 - [**VNOJ**](https://oj.vnoi.info/)
 - [**Baekjoon OJ**](https://acmicpc.net)
 - [**SPhere Online Judge**](https://spoj.com)
+- [**Kattis**](https://open.kattis.com)
 - [**HackerRank**](https://hackerrank.com)
 - [**CodeChef**](https://codechef.com)
 
