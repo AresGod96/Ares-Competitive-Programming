@@ -162,6 +162,24 @@ It only **unstages** (`git rm --cached`); it never deletes files from disk. The 
 
 ---
 
+## GitNexus Index Auto-Refresh
+
+The GitNexus knowledge graph (`.gitnexus/`, git-ignored) is re-indexed automatically
+after each repository update by two hooks that share `.git/hooks/gitnexus-analyze.sh`:
+
+- **`post-commit`** — refresh after every commit (and amend)
+- **`post-merge`** — refresh after every `pull`/`merge`
+
+The shared script runs `node .gitnexus/run.cjs analyze` (falling back to `npx gitnexus
+analyze`) in a **detached background process**, so it never blocks git. A directory lock
+(`.gitnexus/.analyze.lock`) skips a new run while one is in flight — rapid commits don't
+pile up overlapping re-indexes of the large `.gitnexus/lbug`. Output is written to
+`.gitnexus/analyze.log`. POSIX `sh`/dash-safe.
+
+> Like the binary guard, these hooks are local-only — reinstall after a re-clone.
+
+---
+
 ## Editorial / README Convention
 
 Each README follows this template:
