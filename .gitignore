@@ -1,2 +1,7 @@
 .vscode/
 .serena/
+
+# Node tooling
+node_modules/
+package-lock.json
+package.json
