@@ -17,6 +17,20 @@ My CP profile
 - BOJ Handle: [**aresgod**](https://www.acmicpc.net/user/aresgod)
 - solved.ac Handle: [**aresgod**](https://solved.ac/profile/aresgod)
 
+## Statistics
+
+> :bar_chart: **159 solved problems** across 10 sources. Difficulty tiers cover the **31 problems** rated on the [solved.ac](https://solved.ac) scale (mostly BOJ, ICPC, and olympiad problems).
+>
+> Charts are generated from the repo by [`scripts/gen-stats.mjs`](./scripts/gen-stats.mjs) — run `node scripts/gen-stats.mjs` to refresh them after adding solutions.
+
+### Problems by source
+
+<img src="./assets/stats-sources.svg" alt="Problems by source" width="720">
+
+### Problems by difficulty tier
+
+<img src="./assets/stats-tiers.svg" alt="Problems by solved.ac difficulty tier" width="720">
+
 ## Highlights
 
 For most problems, I will rate their difficulty from **Bronze V** <img src="./boj-icon/bronze5.svg" alt="Bronze 5" width="16" height="16"> (easiest) to **Ruby I** <img src="./boj-icon/ruby1.svg" alt="Ruby 1" width="16" height="16"> (hardest) based on [solved.ac](https://solved.ac) rating system.
