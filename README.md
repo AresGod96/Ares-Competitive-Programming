@@ -20,7 +20,7 @@ My CP profile
 
 ## Statistics
 
-> :bar_chart: **159 solved problems** across 10 sources. Difficulty tiers cover the **31 problems** rated on the [solved.ac](https://solved.ac) scale (mostly BOJ, ICPC, and olympiad problems).
+> :bar_chart: **159 solved problems** across 10 sources. Difficulty tiers cover the **32 problems** rated on the [solved.ac](https://solved.ac) scale (mostly BOJ, ICPC, and olympiad problems).
 >
 > Charts are generated from the repo by [`scripts/gen-stats.mjs`](./scripts/gen-stats.mjs) — run `node scripts/gen-stats.mjs` to refresh them after adding solutions.
 
