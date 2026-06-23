@@ -110,11 +110,10 @@ int Ares_KN() // main
 	string s;
 	cin >> s;
 
-	int cnt = 0;
-	int len = 0;
+	int cnt = 0, len = 0;
 	for (auto c: s)	
 	{
-		cnt += c == '7' ? 1 : -cnt;
+		cnt = (c == '7' ? cnt + 1 : 0);
 		len = max(len, cnt);
 		++f[1], --f[cnt + 1];
 	}
