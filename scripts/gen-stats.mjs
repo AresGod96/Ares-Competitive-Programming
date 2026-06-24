@@ -12,9 +12,10 @@
 // of every problem README to tally solved.ac tiers, then writes two
 // self-contained SVG cards that GitHub renders inline in the README.
 
-import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync, existsSync } from "node:fs";
+import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { execSync } from "node:child_process";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = join(ROOT, "assets");
@@ -248,6 +249,111 @@ function svg(w, h, body) {
 `;
 }
 
+// --- Latest problems ---------------------------------------------------------
+const LATEST_N = 5;
+
+// Set of "problem directories" = every directory that holds at least one .cpp,
+// excluding the library / infra folders.
+function problemDirs() {
+  const dirs = new Set();
+  let files;
+  try {
+    files = execSync("git ls-files -z -- '*.cpp'", { cwd: ROOT, encoding: "utf8", maxBuffer: 64 << 20 });
+  } catch {
+    return dirs;
+  }
+  for (const f of files.split("\0")) {
+    if (!f) continue;
+    const dir = dirname(f);
+    const top = dir.split("/")[0];
+    if (dir === "." || SKIP_DIRS.has(top) || top === "library" || top === "scripts") continue;
+    dirs.add(dir);
+  }
+  return dirs;
+}
+
+// The N most recently *touched* problems (last commit affecting any file in the
+// problem dir — so adding or revising an editorial counts as activity), newest
+// first. Returns [{ dir, date }].
+function latestProblems(n) {
+  const dirs = problemDirs();
+  if (!dirs.size) return [];
+  let log;
+  try {
+    log = execSync("git log --name-only --no-renames --pretty=format:@%cI", {
+      cwd: ROOT,
+      encoding: "utf8",
+      maxBuffer: 256 << 20,
+    });
+  } catch {
+    return [];
+  }
+  const seen = new Map(); // dir -> newest ISO date (git log is newest-first)
+  let cur = null;
+  for (const line of log.split("\n")) {
+    if (line[0] === "@") {
+      cur = line.slice(1);
+      continue;
+    }
+    if (!line) continue;
+    const dir = dirname(line);
+    if (dirs.has(dir) && !seen.has(dir)) seen.set(dir, cur);
+  }
+  return [...seen.entries()]
+    .map(([dir, date]) => ({ dir, date }))
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+    .slice(0, n);
+}
+
+// Pull title / difficulty badge / editorial links from a problem dir's README.
+function problemMeta(dir) {
+  const abs = join(ROOT, dir);
+  const readme = join(abs, "README.md");
+  let title = basename(dir);
+  let badgeFile = "0";
+  let badgeAlt = "Unrated";
+  let hasEn = false;
+  let hasVi = existsSync(join(abs, "README-vi.md"));
+  if (existsSync(readme)) {
+    hasEn = true;
+    const text = readFileSync(readme, "utf8");
+    const titleLine = text.split("\n").find((l) => /^##\s+Problem\b/.test(l)) || "";
+    const t = titleLine.replace(/^##\s+Problem\s+/, "").replace(/\s*<img[\s\S]*$/i, "").trim();
+    if (t) title = t;
+    const badge = titleLine.match(/boj-icon\/([a-z0-9]+)\.svg/i) || text.match(/Difficulty[^\n]*boj-icon\/([a-z0-9]+)\.svg/i);
+    if (badge) {
+      badgeFile = badge[1];
+      const alt = titleLine.match(/alt="([^"]+)"/) || text.match(/Difficulty[^\n]*alt="([^"]+)"/);
+      if (alt) badgeAlt = alt[1];
+    }
+  }
+  return { title, badgeFile, badgeAlt, hasEn, hasVi };
+}
+
+function renderLatest(items) {
+  const lines = [
+    "## Latest problems :sparkles:",
+    "",
+    "The 5 most recently added or updated problems (auto-generated):",
+    "",
+    "| Date | Problem | Difficulty | Editorial |",
+    "|---|---|---|---|",
+  ];
+  for (const { dir, date } of items) {
+    const m = problemMeta(dir);
+    const day = (date || "").slice(0, 10);
+    const badge = `<img src="./boj-icon/${m.badgeFile}.svg" alt="${esc(m.badgeAlt)}" width="16" height="16"> ${esc(m.badgeAlt)}`;
+    const enc = encodeURI(dir);
+    const name = `[${esc(m.title)}](./${enc})`;
+    const links = [];
+    if (m.hasEn) links.push(`[EN](./${enc}/README.md)`);
+    if (m.hasVi) links.push(`[VI](./${enc}/README-vi.md)`);
+    const editorial = links.length ? links.join(" · ") : "—";
+    lines.push(`| ${day} | ${name} | ${badge} | ${editorial} |`);
+  }
+  return lines.join("\n");
+}
+
 // --- Main --------------------------------------------------------------------
 const counts = new Map(SOURCE_META.map(([label]) => [label, 0]));
 const add = (label, n) => counts.set(label, (counts.get(label) || 0) + n);
@@ -298,12 +404,22 @@ const totalRated = TIERS.reduce((a, [k]) => a + tierCounts[k], 0);
 const readmePath = join(ROOT, "README.md");
 try {
   const before = readFileSync(readmePath, "utf8");
-  const after = before
+  let after = before
     .replace(/\*\*\d+ solved problems\*\* across \d+ sources/, `**${totalProblems} solved problems** across ${sourceRows.length} sources`)
     .replace(/cover the \*\*\d+ problems\*\* rated/, `cover the **${totalRated} problems** rated`);
+
+  // Refresh the auto-generated "Latest problems" block between markers.
+  const latest = latestProblems(LATEST_N);
+  if (latest.length) {
+    const block = `<!-- latest:start -->\n${renderLatest(latest)}\n<!-- latest:end -->`;
+    if (/<!-- latest:start -->[\s\S]*?<!-- latest:end -->/.test(after)) {
+      after = after.replace(/<!-- latest:start -->[\s\S]*?<!-- latest:end -->/, block);
+    }
+  }
+
   if (after !== before) {
     writeFileSync(readmePath, after);
-    console.log("Updated README.md summary line");
+    console.log("Updated README.md (summary line + latest problems)");
   }
 } catch {
   // README is optional from the script's perspective.
