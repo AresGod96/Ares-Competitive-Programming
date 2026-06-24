@@ -39,11 +39,11 @@ The 5 most recently added or updated problems (auto-generated):
 
 | Date | Problem | Difficulty | Editorial |
 |---|---|---|---|
-| 2026-06-23 | [VNOJ VOSSEVEN - Bài toán số 7](./vnoj/VOSSEVEN) | <img src="./boj-icon/bronze1.svg" alt="Bronze 1" width="16" height="16"> Bronze 1 | [EN](./vnoj/VOSSEVEN/README.md) · [VI](./vnoj/VOSSEVEN/README-vi.md) |
-| 2026-06-20 | [COLOREC](./olympiads/VOI/2011/COLOREC) | <img src="./boj-icon/gold1.svg" alt="Gold 1" width="16" height="16"> Gold 1 | [EN](./olympiads/VOI/2011/COLOREC/README.md) |
-| 2026-06-20 | [SPOJ PT07Y - Is it a tree](./spoj/PT07Y) | <img src="./boj-icon/bronze1.svg" alt="Bronze 1" width="16" height="16"> Bronze 1 | [EN](./spoj/PT07Y/README.md) |
-| 2026-06-16 | [SPOJ QTREE2 - Query on a tree II](./spoj/qtree2) | <img src="./boj-icon/plat5.svg" alt="Platinum 5" width="16" height="16"> Platinum 5 | [EN](./spoj/qtree2/README.md) |
-| 2026-06-16 | [BOJ 3176 - Lubenica](./boj/03176-Lubenica) | <img src="./boj-icon/plat4.svg" alt="Platinum 4" width="16" height="16"> Platinum 4 | [EN](./boj/03176-Lubenica/README.md) |
+| 2026-06-24 | [BOJ 3176 - Lubenica](./boj/03176-Lubenica) | <img src="./boj-icon/plat4.svg" alt="Platinum 4" width="16" height="16"> Platinum 4 | [EN](./boj/03176-Lubenica/README.md) |
+| 2026-06-24 | [BOJ 11437 - LCA](./boj/11437-LCA) | <img src="./boj-icon/gold3.svg" alt="Gold 3" width="16" height="16"> Gold 3 | [EN](./boj/11437-LCA/README.md) |
+| 2026-06-24 | [BOJ 11438 - LCA](./boj/11438-LCA%202) | <img src="./boj-icon/plat5.svg" alt="Platinum 5" width="16" height="16"> Platinum 5 | [EN](./boj/11438-LCA%202/README.md) |
+| 2026-06-24 | [20033-Square Not Rectangle](./boj/20033-Square%20Not%20Rectangle) | <img src="./boj-icon/0.svg" alt="Unrated" width="16" height="16"> Unrated | — |
+| 2026-06-24 | [A](./codeforces/Round%20544%20Div3/A) | <img src="./boj-icon/0.svg" alt="Unrated" width="16" height="16"> Unrated | — |
 <!-- latest:end -->
 
 ## Highlights
